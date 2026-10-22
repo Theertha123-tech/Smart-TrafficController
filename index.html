@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smart traffic and emergency signal controller">
+    <title>Smart Traffic Controller</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div>
+        <h1>🚦 Smart Traffic Controller</h1>
+        <p>Multi-Level Traffic &amp; Emergency Signal Management</p>
+    </div>
+    <span class="status">● SYSTEM ONLINE</span>
+</header>
+
+<main>
+    <section class="stats">
+        <div class="stat-card"><p>Total Waiting</p><h2 id="totalVehicles">0</h2></div>
+        <div class="stat-card"><p>Emergency Vehicles</p><h2 id="emergencyCount">0</h2></div>
+        <div class="stat-card"><p>Active Green Signal</p><h2 id="activeLane">None</h2></div>
+        <div class="stat-card"><p>Vehicles Passed</p><h2 id="passedCount">0</h2></div>
+    </section>
+
+    <section class="panel">
+        <h2>➕ Add Vehicle</h2>
+        <form id="vehicleForm">
+            <label for="vehicleNumber">Vehicle Number</label>
+            <input id="vehicleNumber" placeholder="e.g. KL01AB1234"
+                   required maxlength="20">
+
+            <label for="lane">Select Lane</label>
+            <select id="lane">
+                <option value="0">Lane 1 — North</option>
+                <option value="1">Lane 2 — South</option>
+                <option value="2">Lane 3 — East</option>
+                <option value="3">Lane 4 — West</option>
+            </select>
+
+            <label for="vehicleType">Vehicle Type</label>
+            <select id="vehicleType">
+                <option value="normal">Normal Vehicle</option>
+                <option value="ambulance">Ambulance</option>
+                <option value="fire">Fire Engine</option>
+                <option value="police">Police Vehicle</option>
+            </select>
+
+            <button type="submit">Add Vehicle</button>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>🚥 Live Traffic Signals</h2>
+        <p class="hint">The busiest lane receives the next green signal.
+            Emergency vehicles receive priority.</p>
+        <div class="lanes" id="lanes" aria-live="polite"></div>
+        <button id="controlBtn" class="control-btn" type="button">
+            ▶ Control Next Signal
+        </button>
+        <button id="resetBtn" class="reset-btn" type="button">
+            Reset Simulation
+        </button>
+    </section>
+
+    <section class="panel">
+        <h2>🚑 Emergency Priority Queue</h2>
+        <p class="hint">Priority: Ambulance → Fire Engine → Police</p>
+        <div id="emergencyList" aria-live="polite">
+            No emergency vehicles waiting.
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>📋 Activity Log</h2>
+        <ul id="activityLog" aria-live="polite">
+            <li>System initialized. Ready to manage traffic.</li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    Smart Traffic Controller | Academic Project
+    <br>HTML · CSS · JavaScript · Java Spring Boot
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
